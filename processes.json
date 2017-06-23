@@ -1,0 +1,16 @@
+{
+    "apps": [
+        {
+            "name": "nodeapp1",
+            "script": "./bin/www",
+            "merge_logs": true,
+            "max_restarts": 1,
+            "instances": 1,
+            "max_memory_restart": "10M",
+            "env": {
+                "PORT": 3000,
+                "NODE_ENV": "development"
+            }
+        }
+    ]
+}
