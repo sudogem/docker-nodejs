@@ -4,7 +4,7 @@ FROM debian:jessie
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # Set environment variables
-ENV appDir /var/www/app/nodeapp
+ENV appDir /var/www/app/nodeapp1
 
 # Run updates and install deps
 RUN apt-get update
@@ -40,19 +40,18 @@ ENV NODE_PATH $NVM_DIR/versions/node/v$NODE_VERSION/lib/node_modules
 ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 # Set the work directory
-RUN mkdir -p /var/www/app/nodeapp
+RUN mkdir -p /var/www/app/nodeapp1
 WORKDIR ${appDir}
 
 # Add our package.json and install *before* adding our application files
 ADD package.json ./
-ADD processes.json ./
 RUN npm install
 
 # Install pm2 *globally* so we can run our application
 RUN npm i -g pm2
 
 # Add application files
-ADD . /var/www/app/nodeapp
+ADD . /var/www/app/nodeapp1
 
 # replace this with your application's default port
 EXPOSE 3000
